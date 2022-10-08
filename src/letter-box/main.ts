@@ -3,10 +3,10 @@ const map = new Map<string, number>();
 const splitNumber = (num: number) => {
     if (!num) return;
     const key = `${num % 10}`;
-    const counter = 1;
-    if (map.has(key)) map.set(key, (map.get(key) || 0) + 1);
-    else map.set(key, counter);
-    splitNumber(Math.trunc(num / 10));
+    const value = map.has(key) ? (map.get(key) || 0) + 1 : 1;
+    map.set(key, value);
+    num = Math.trunc(num / 10);
+    splitNumber(num);
 };
 
 export const letterBox = (start = 0, end = 0) => {
